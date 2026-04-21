@@ -7,7 +7,7 @@ author_profile: true
 
 {% include base_path %}
 
-{% assign grouped = site.portfolio | group_by: "category" | sort: "name" %}
+{% assign grouped = site.portfolio | group_by: "category" | sort: "name" | reverse %}
 {% for group in grouped %}
   <h2 id="{{ group.name | slugify }}">{{ group.name }}</h2>
   {% for post in group.items %}
