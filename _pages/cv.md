@@ -9,56 +9,19 @@ redirect_from:
 
 {% include base_path %}
 
-Education
-======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+My full CV is available as a PDF: [Download CV (PDF)](/files/Chris_Liang_Resume.pdf).
 
-Work experience
-======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+## Education
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+- **MS in Computer Science**, Tufts University (expected May 2027)
+- **BS in Computer Science**, Brandeis University (May 2024, *Magna Cum Laude*)
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+## Research Experience
 
-Publications
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+- **SPARC Lab, Tufts University** — Graduate Research Assistant (Jan 2026 – Present). Advisor: Prof. Ryan Cosner.
+- **MULIP Lab, Tufts University** — Graduate Research Assistant (Aug 2025 – Jan 2026). Advisor: Prof. Jivko Sinapov.
+
+## Professional Experience
+
+- **Wealth.com** — Software Engineer (Jan 2025 – Jul 2025)
+- **HealthFlexx** — Applied Scientist Intern (Jun 2023 – Aug 2023)
