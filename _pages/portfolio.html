@@ -7,8 +7,10 @@ author_profile: true
 
 {% include base_path %}
 
-
-{% for post in site.portfolio %}
-  {% include archive-single.html %}
+{% assign grouped = site.portfolio | group_by: "category" | sort: "name" %}
+{% for group in grouped %}
+  <h2 id="{{ group.name | slugify }}">{{ group.name }}</h2>
+  {% for post in group.items %}
+    {% include archive-single.html %}
+  {% endfor %}
 {% endfor %}
-

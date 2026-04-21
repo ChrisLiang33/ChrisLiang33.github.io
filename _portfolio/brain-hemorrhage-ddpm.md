@@ -2,7 +2,7 @@
 title: "Brain Hemorrhage Detection with DDPM Reconstruction"
 excerpt: "Generative AI · A diffusion model trained only on healthy brain scans flags hemorrhages via reconstruction error."
 collection: portfolio
-category: "Generative AI"
+category: "AI"
 ---
 
 **Generative AI** · Fall 2025
