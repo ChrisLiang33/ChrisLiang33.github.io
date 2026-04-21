@@ -1,20 +1,22 @@
 ---
 layout: archive
-title: "Research"
+title: "Research Experience"
 permalink: /research/
 author_profile: true
 ---
 
-## SPARC Lab — Safe + Performant Autonomous Robotics and Control
+## SPARC Lab, Tufts University
 
-*Tufts University · Jan 2026 – Present · Advisor: Prof. Ryan Cosner*
+*Safe + Performant Autonomous Robotics and Control · Jan 2026 – Present*
+*Advisor: [Prof. Ryan Cosner](https://www.rkcosner.com/)*
 
-At the [SPARC Lab](https://www.rkcosner.com/) we work toward making robots you can trust — robotics research at the intersection of machine learning and control theory, aiming for provably safe and dynamic robot autonomy in real-world settings.
+- Designing learned Control Barrier Function (CBF) approaches that navigate the safety-performance tradeoff, adaptively modulating nominal controllers to remain robust under disturbances and distribution shift.
+- Architected and trained policy distillation pipelines to produce adaptive safety parameters that adjust online to operating conditions, bridging data-driven adaptability with formal control-theoretic guarantees.
 
-My current work focuses on learned Control Barrier Function (CBF) approaches that navigate the safety-performance tradeoff, adaptively modulating nominal controllers to remain robust under disturbances and distribution shift. I've been architecting and training policy distillation pipelines that produce adaptive safety parameters — bridging data-driven adaptability with formal control-theoretic guarantees, with an eye toward sim-to-real validation on legged robot platforms.
+## MULIP Lab, Tufts University
 
-## MULIP Lab — Multi-Modal Learning, Interaction, and Perception
+*Multi-Modal Learning, Interaction, and Perception · Aug 2025 – Jan 2026*
+*Advisor: [Prof. Jivko Sinapov](https://www.eecs.tufts.edu/~jsinapov/)*
 
-*Tufts University · Aug 2025 – Jan 2026 · Advisor: Prof. Jivko Sinapov*
-
-I worked on multi-modal tactile data collection and transfer learning for robot skill learning. Specifically: building and executing tactile data collection protocols on a UR5 manipulator across a range of tool-use actions, developing pipeline components for data preprocessing and representation analysis, and maintaining broader lab infrastructure.
+- Built and executed multi-modal tactile data collection protocols on a UR5 manipulator across a range of tool-use actions, producing trial datasets for downstream reinforcement learning research.
+- Investigated transfer learning for tactile perception, developing pipeline components for data preprocessing and representation analysis, and maintaining lab infrastructure and onboarding pipelines.

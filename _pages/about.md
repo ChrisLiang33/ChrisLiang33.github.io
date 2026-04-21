@@ -16,3 +16,7 @@ Previously I worked in the [MULIP Lab](https://www.eecs.tufts.edu/~jsinapov/) wi
 **Before Tufts:** BS in Computer Science from Brandeis (Magna Cum Laude, May 2024), where I also played NCAA Varsity Baseball. Prior industry experience at Wealth.com and HealthFlexx.
 
 **In my free time:** basketball, reading philosophy, and practicing MMA.
+
+---
+
+[Download resume (PDF)](/files/Chris_Liang_Resume.pdf)
