@@ -18,8 +18,6 @@ A 3D-printed bipedal robot built end-to-end: CAD, fabrication, electronics, and 
 
 [**Walking video →**](https://drive.google.com/file/d/147QfC2F2BtMzXfndmTY_-xQ9kmrhRBI7/view?usp=sharing) · [**Modular leg-swap demo →**](https://drive.google.com/file/d/1TE6eSTr26y9xUJCiJ3cU-OD9qN5ihUt_/view?usp=sharing) · [**All build & test footage (Drive folder) →**](https://drive.google.com/drive/folders/1ROvHOyrOt20AlWEoPkbIN6lXl_CtkAe5?usp=sharing)
 
-> *Working portfolio — a few plot/photo placeholders below are still being filled in.*
-
 ---
 
 ## Overview
@@ -75,6 +73,12 @@ The robot was built outward from a single-leg prototype: Onshape CAD → 3D-prin
 
 [**Single-leg motion test video →**](https://drive.google.com/file/d/1j3pCvYLnnt1cYofnOZKOuKcoFp1tahUi/view?usp=sharing)
 
+![Single leg: CAD design next to the assembled 3D-printed leg](/images/jumbot/leg-cad-vs-real.png)
+*From CAD to real world — the right-leg assembly in Onshape (left) and the assembled 3D-printed leg with servos installed (right).*
+
+![3D printing process: orientation in slicer, in-progress print on Prusa MK4S, completed parts on Core One, supports removed](/images/jumbot/printing.png)
+*3D printing process — parts oriented in the slicer with overhangs facing up, v1.0 printing on a Prusa MK4S, v2.0 final parts on a Prusa Core One, and the printed parts with support structures cleaned off.*
+
 ![Jumbot-B exploded view](/images/jumbot/exploded.png)
 *Exploded view of the full assembly — chassis plate, four servos per leg, linkage parts, hardware, and the foot module.*
 
@@ -99,6 +103,9 @@ Issues found during the single-leg build phase and how each was resolved:
 | 2 | Foot was too tight to assemble with the bottom leg link | Loosened tolerance for a clean fit |
 | 3 | Servo disk broke during testing from motion conflict with the linkage | Fine-tuned the joint's motion range to remove the interference |
 
+![Three failure photos: cracked hip mount, foot fit issue with mouse for scale, snapped servo disk in linkage](/images/jumbot/failure-photos.png)
+*Failures captured at the hardware: (1) the cracked cyan hip mount split along the print layers under shear; (2) the original foot wouldn't seat onto the bottom leg link — mouse for scale; (3) the snapped servo disk in-situ after the linkage drove it past its mechanical limit.*
+
 Bipedal-stage iterations (post-assembly):
 
 - **TPU foot experiment.** We replaced PLA feet with TPU (85A) hoping for better ground compliance. The flexibility expanded the gait search problem — the robot lost static balance and was harder to control — and we reverted to PLA.
@@ -111,7 +118,8 @@ The robot is controlled by a Raspberry Pi running a periodic gait function. Serv
 
 **Walking video:** [Jumbot-B taking baby steps](https://drive.google.com/file/d/147QfC2F2BtMzXfndmTY_-xQ9kmrhRBI7/view?usp=sharing)
 
-> Walking-frame sequence still — **coming** *(drop at `images/jumbot/walking-frames.jpg`)*.
+![Four-frame sequence of Jumbot-B walking on the lab floor](/images/jumbot/walking-frames.png)
+*Frame sequence captured from the walking video — body shifts side-to-side as the swing leg clears the floor between consecutive support phases.*
 
 ### Hip Kinematics
 
@@ -148,7 +156,8 @@ Speed measurements across iterations:
 
 That's roughly a **3.1× speedup** from first walking gait to final, driven by hardware reliability fixes (thicker power wiring, cable management) and additional gait waypoint tuning.
 
-> Plot of best speed vs. iteration — **coming** *(generate from the table above as `images/jumbot/learning-curve.png`)*.
+![Robot taking steps next to a tape measure](/images/jumbot/tape-measure-speed.png)
+*Speed measurement at the Baby Steps milestone — robot walking next to a tape measure: 1 in/sec at peak, 2 in/cycle, 2 sec/cycle.*
 
 ## Gait Development
 
@@ -169,7 +178,8 @@ We log per-servo position, velocity, temperature, and bus voltage during a walki
 - **Temperature (°C):** servos warm steadily from ~30 °C to ~40 °C over the run — comfortably below the failure window.
 - **Bus voltage (mV):** ~8400–8800 mV with the upgraded wiring; pre-upgrade dips that caused jitter are no longer present.
 
-> Servo data plot — **coming** *(drop at `images/jumbot/servo-data.png`)*.
+![Servo data: position, velocity, temperature, voltage during walking](/images/jumbot/servo-plot.png)
+*Servo data during the Baby Steps gait — 8 s of position, velocity, temperature, and bus voltage logged from all 8 servos.*
 
 ## Energy Efficiency
 
