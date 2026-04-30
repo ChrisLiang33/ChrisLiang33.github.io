@@ -23,7 +23,7 @@ A 3D-printed bipedal robot built end-to-end: CAD, fabrication, electronics, and 
 
 Jumbot-B is a small bipedal robot driven by six servos and a Raspberry Pi, with chassis and feet 3D-printed in PLA. Each leg has hip yaw + hip roll, knee, and ankle joints — enough articulation to shift weight and twist the body during single-support phases of a gait.
 
-We skipped simulation for this project (see [Simulation](#simulation) below) and tuned gaits directly on the hardware using servo encoder feedback.
+We tuned gaits directly on the hardware using servo encoder feedback rather than running a simulation track.
 
 ## Robot Design & CAD
 
@@ -44,10 +44,6 @@ Notable changes across revisions:
 
 - **TPU foot experiment.** We replaced PLA feet with TPU (85A) hoping for better ground compliance. The flexibility expanded the gait search problem — the robot lost static balance and was harder to control — and we reverted to PLA.
 - **Power delivery upgrade.** The original thin wiring between the DC converter and battery produced enough voltage drop to make servo behavior inconsistent. Replacing it with thicker-gauge cables stabilized the power rail and the gait reliability immediately improved.
-
-## Simulation
-
-We did not pursue a simulation track for this project. We attempted to export a URDF from Onshape but ran into compatibility issues. Rather than burn the iteration budget on a sim pipeline that wasn't paying off, we shifted to hardware-first gait tuning with encoder feedback.
 
 ## Hardware Implementation
 
