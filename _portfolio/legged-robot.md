@@ -1,10 +1,14 @@
 ---
-title: "3D-Printed Legged Robot"
-excerpt: "[Maintenance] Designed, printed, and walked a custom legged robot driven by a Raspberry Pi control stack."
+title: "Jumbot-B: 3D-Printed Bipedal Robot"
+excerpt: "[Ongoing] A 3D-printed bipedal robot built end-to-end — CAD, fabrication, electronics, manual gait tuning. Best speed 4 cm/sec."
 collection: portfolio
 category: "Robotics"
 ---
 
-**Status:** Maintenance
+**Status:** Ongoing
 
-Built a legged robot end-to-end — CAD, 3D printing, assembly, and the control stack needed to make it walk on a Raspberry Pi.
+Designed and built **Jumbot-B**, a 3D-printed bipedal robot — CAD, mechanical assembly, electronics, and gait tuning. Walking at 4 cm/sec via manually-tuned periodic gaits from encoder waypoints; refinements ongoing.
+
+[**See the full project page →**](/jumbot/)
+
+*With Zhenkai Gao.*
