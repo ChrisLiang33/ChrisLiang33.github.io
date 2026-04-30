@@ -102,6 +102,18 @@ We log per-servo position, velocity, temperature, and bus voltage during a walki
 
 > Servo data plot — **coming** *(drop at `images/jumbot/servo-data.png`)*.
 
+## Energy Efficiency
+
+Quick efficiency numbers derived from the spec sheet and best-speed measurement:
+
+| Metric | Value | How |
+|---|---|---|
+| Peak power draw | 5.4 W | 9 V × 0.6 A (measured) |
+| Energy per meter at top speed | ~135 J/m | 5.4 W ÷ 0.04 m/s |
+| Cost of Transport (CoT) | ~2.0 | P / (m · g · v) = 5.4 / (6.8 · 9.81 · 0.04) |
+
+Cost of Transport is the standard dimensionless efficiency metric for legged locomotion. Humans walking sit around CoT ≈ 0.2; research quadrupeds like ANYmal land in the 1–3 range. Jumbot-B's ~2.0 is in the right ballpark for a small experimental biped, though there's clear room to optimize — most of the 5.4 W is going to support-leg holding torque, not forward motion.
+
 ## Robot Reliability Routines
 
 - **Health check on boot:** queries each servo for position, temperature, and voltage; aborts startup if any servo fails to respond or reports out-of-range temperature.
@@ -119,7 +131,7 @@ We log per-servo position, velocity, temperature, and bus voltage during a walki
 - Refine the walking gait beyond the current 4 cm/sec.
 - Land the Onshape → URDF pipeline so we can prototype gaits in MuJoCo before committing to hardware.
 - Add new locomotion modes: turning, uneven terrain, jumping.
-- Energy efficiency analysis: current draw vs. velocity, energy per meter.
+- Sweep a full power-vs-velocity efficiency curve to find the CoT-minimizing gait.
 
 ## Code Repository
 
