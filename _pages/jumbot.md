@@ -107,6 +107,10 @@ In the meantime, full build and test footage lives in the [Drive folder](https:/
 
 [github.com/ChrisLiang33/jumbotB](https://github.com/ChrisLiang33/jumbotB)
 
+## Citations
+
+[1] Sun, B., Mohamed Haris, S., & Ramli, R. (2026). A Systematic Review of Deep Reinforcement Learning for Legged Robot Locomotion. *Instruments*, 10(1), 8. <https://www.mdpi.com/2410-390X/10/1/8>
+
 ## Acknowledgements
 
 Built for **ME 143 — Spring 2026** at Tufts University. Thanks to the course staff for the platform and feedback throughout the term.
