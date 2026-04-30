@@ -51,9 +51,23 @@ Key design choices:
 
 ## Mechanical Assembly
 
-> Build / iteration photos — **coming** *(drop iteration shots and the walking-frame sequence in `images/jumbot/`)*.
+The robot was built outward from a single-leg prototype: Onshape CAD → 3D-printed parts (PLA, Prusa MK4S for v1.0 prototyping, Prusa Core One for v2.0 final parts) → support-structure removal → assembly → single-leg motion test → tandem-leg test → full bipedal robot.
 
-Notable changes across revisions:
+[**Single-leg motion test video →**](https://drive.google.com/file/d/1j3pCvYLnnt1cYofnOZKOuKcoFp1tahUi/view?usp=sharing)
+
+> Build / iteration photos — **coming** *(drop in `images/jumbot/`: `cad-leg.jpg`, `leg-prototype.jpg`, `printing.jpg`, `failures.jpg`, `cable-routing.jpg`)*.
+
+### Failure & Iteration Log
+
+Issues found during the single-leg build phase and how each was resolved:
+
+| # | Issue | Fix |
+|---|---|---|
+| 1 | Hip mount broke under small shear-bending loads | Increased wall thickness on the mount |
+| 2 | Foot was too tight to assemble with the bottom leg link | Loosened tolerance for a clean fit |
+| 3 | Servo disk broke during testing from motion conflict with the linkage | Fine-tuned the joint's motion range to remove the interference |
+
+Bipedal-stage iterations (post-assembly):
 
 - **TPU foot experiment.** We replaced PLA feet with TPU (85A) hoping for better ground compliance. The flexibility expanded the gait search problem — the robot lost static balance and was harder to control — and we reverted to PLA.
 - **Power delivery upgrade.** The original thin wiring between the DC converter and battery produced enough voltage drop to make servo behavior inconsistent. Replacing it with thicker-gauge cables stabilized the power rail and gait reliability immediately improved.
@@ -66,6 +80,19 @@ The robot is controlled by a Raspberry Pi running a periodic gait function. Serv
 **Walking video:** [Jumbot-B taking baby steps](https://drive.google.com/file/d/147QfC2F2BtMzXfndmTY_-xQ9kmrhRBI7/view?usp=sharing)
 
 > Walking-frame sequence still — **coming** *(drop at `images/jumbot/walking-frames.jpg`)*.
+
+### Servo Safety Limits
+
+Per-joint position bounds, validated empirically by sweeping each servo through its full physical range and noting where the linkage starts to bind:
+
+| Joint | Min (deg) | Max (deg) |
+|---|---|---|
+| Leg (knee) | 85 | 235 |
+| Hip pitch | 95 | 190 |
+| Hip yaw | 20 | 200 |
+| Hip roll | 30 | 210 |
+
+The gait controller clamps every servo command against these bounds so a misbehaving function can't drive a servo into the chassis or fight the linkage.
 
 ## Performance & Learning Curve
 
@@ -116,8 +143,16 @@ Cost of Transport is the standard dimensionless efficiency metric for legged loc
 
 ## Robot Reliability Routines
 
-- **Health check on boot:** queries each servo for position, temperature, and voltage; aborts startup if any servo fails to respond or reports out-of-range temperature.
-- **Shutdown routine:** detorques servos, returns to a safe pose, then powers down — prevents the robot from collapsing under its own weight when killed mid-run.
+- **Boot health check.** Queries each servo for position, temperature, and bus voltage; aborts startup if any servo fails to respond or reports out-of-range temperature.
+- **Servo-disconnect catch.** The main control loop wraps servo commands in a `try`/`except` for `ServoTimeoutError`. If a motor disconnects or times out mid-gait, the loop logs a critical error and exits cleanly rather than charging on with a dead actuator.
+- **Shutdown routine.** Detorques servos, returns the robot to a safe pose, then powers down — prevents the robot from collapsing under its own weight when killed mid-run.
+
+```python
+except ServoTimeoutError:
+    print("\nCRITICAL ERROR: A motor disconnected or timed out!")
+    print("Initiating emergency stop...")
+    break
+```
 
 ## Lessons Learned
 
@@ -125,6 +160,7 @@ Cost of Transport is the standard dimensionless efficiency metric for legged loc
 - **Power delivery is invisible until it isn't.** Thin wires produced enough voltage drop to make servo behavior inconsistent — symptoms looked like control bugs but were really hardware. Thick cables fixed it.
 - **Sim-to-real has a fixed setup cost.** When that cost is high relative to the iteration budget — as it was once Onshape URDF export proved unreliable — tuning directly on hardware can dominate.
 - **Encoder-driven manual gaits work.** The waypoint-based periodic function is crude but converges quickly once you find the first half of the cycle.
+- **Build quality before control quality.** Three early single-leg failures (hip-mount cracking under shear, tight foot tolerances, servo-disk breakage from motion conflict) all came from CAD/print/assembly mismatches. Fixing each at the source — wall thickness, tolerance, motion-range checks — was much cheaper than working around them in software.
 
 ## Future Work
 
