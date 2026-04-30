@@ -79,10 +79,6 @@ The hip yaw + roll axes give Jumbot-B more body-twisting capability — useful f
 
 > Motor speed / position / torque plots — **coming**.
 
-## Other Goals & Environments
-
-> Turning, uneven terrain, obstacles — **coming**.
-
 ## Final Optimized Gait
 
 > Final-gait video with performance metrics overlay — **coming**.
@@ -92,10 +88,6 @@ In the meantime, full build and test footage lives in the [Drive folder](https:/
 ## Results & Comparison
 
 > Summary table comparing iterations — **coming**.
-
-## Energy Efficiency
-
-> Power draw / energy-per-meter analysis — **coming**.
 
 ## Lessons Learned
 
@@ -113,7 +105,7 @@ In the meantime, full build and test footage lives in the [Drive folder](https:/
 
 ## Code Repository
 
-> Code repo link — **coming**.
+[github.com/ChrisLiang33/jumbotB](https://github.com/ChrisLiang33/jumbotB)
 
 ## Acknowledgements
 
