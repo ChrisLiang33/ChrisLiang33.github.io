@@ -8,14 +8,15 @@ toc_label: "Contents"
 toc_sticky: true
 ---
 
-**Team:** Xianmai (Chris) Liang · Zhenkai Gao
+## By Zhenkai Gao & Xianmai (Chris) Liang
+
 **Course:** ME 134 — Robotics Studio, Spring 2026, Tufts University
 
 A 3D-printed bipedal robot built end-to-end: CAD, fabrication, electronics, and gait tuning. Jumbot-B walks at a best speed of **4 cm/sec** using manually-tuned periodic gaits derived from servo encoder data.
 
 ![Jumbot-B photorealistic render](/images/jumbot/glamour.png)
 
-[**Walking video →**](https://drive.google.com/file/d/147QfC2F2BtMzXfndmTY_-xQ9kmrhRBI7/view?usp=sharing) · [**All build & test footage (Drive folder) →**](https://drive.google.com/drive/folders/1ROvHOyrOt20AlWEoPkbIN6lXl_CtkAe5?usp=sharing)
+[**Walking video →**](https://drive.google.com/file/d/147QfC2F2BtMzXfndmTY_-xQ9kmrhRBI7/view?usp=sharing) · [**Modular leg-swap demo →**](https://drive.google.com/file/d/1TE6eSTr26y9xUJCiJ3cU-OD9qN5ihUt_/view?usp=sharing) · [**All build & test footage (Drive folder) →**](https://drive.google.com/drive/folders/1ROvHOyrOt20AlWEoPkbIN6lXl_CtkAe5?usp=sharing)
 
 > *Working portfolio — a few plot/photo placeholders below are still being filled in.*
 
@@ -80,7 +81,13 @@ The robot was built outward from a single-leg prototype: Onshape CAD → 3D-prin
 ![Three perspective renderings of Jumbot-B](/images/jumbot/perspectives.png)
 *Three perspective renders of the assembled robot.*
 
-> Build / iteration photos — **coming** *(real build/print/cable photos to be dropped in alongside the renders above)*.
+### Assembled Robot Photos
+
+![Lab photos of the assembled Jumbot-B robot](/images/jumbot/build-photos.png)
+*Painted/sanded final assembly on the bench — chassis bolted up, all 8 servos wired into the bus, cable bundle routed along the spine.*
+
+![Jumbot-B standing on the lab floor](/images/jumbot/behind-scenes.png)
+*Behind the scenes: standing on the lab floor between gait-tuning runs.*
 
 ### Failure & Iteration Log
 
@@ -179,8 +186,12 @@ Cost of Transport is the standard dimensionless efficiency metric for legged loc
 ## Robot Reliability Routines
 
 - **Boot health check.** Queries each servo for position, temperature, and bus voltage; aborts startup if any servo fails to respond or reports out-of-range temperature.
+- **Homing routine.** Drives all 8 servos to a known stand-up pose via `safe_move`, which clamps every commanded angle to the per-servo bounds before issuing the move. Used at startup and as a recovery pose between gait runs.
 - **Servo-disconnect catch.** The main control loop wraps servo commands in a `try`/`except` for `ServoTimeoutError`. If a motor disconnects or times out mid-gait, the loop logs a critical error and exits cleanly rather than charging on with a dead actuator.
-- **Shutdown routine.** Detorques servos, returns the robot to a safe pose, then powers down — prevents the robot from collapsing under its own weight when killed mid-run.
+- **Shutdown routine.** Detorques servos, returns the robot to the home pose, then powers down — prevents the robot from collapsing under its own weight when killed mid-run.
+
+![homing() routine source code](/images/jumbot/homing-code.png)
+*The `homing()` function: each leg's four servos move to their home angle through a clamped `safe_move` wrapper, then a 2.5 s settle pause.*
 
 ```python
 except ServoTimeoutError:
@@ -246,4 +257,4 @@ except ServoTimeoutError:
 
 Built for **ME 134 — Robotics Studio, Spring 2026** at Tufts University. Thanks to the course staff for the platform and feedback throughout the term.
 
-Project by Xianmai (Chris) Liang and Zhenkai Gao.
+Project by Zhenkai Gao and Xianmai (Chris) Liang.
